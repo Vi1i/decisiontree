@@ -1,0 +1,4 @@
+// the configured options and settings for dns-aap
+#define dt_VERSION_MAJOR @dt_VERSION_MAJOR@
+#define dt_VERSION_MINOR @dt_VERSION_MINOR@
+#define dt_VERSION_PATCH @dt_VERSION_PATCH@
