@@ -86,13 +86,15 @@ int ArgRule(const std::string& arg) {
  }
 
 /**
- * 
+ * A helper method to check and verify syntax of the arguments as well as the
+ * correct data to go with them.
  *
  * @param argc The count of the arguments in argv
  * @param argv The argument data stored in a 2d array
- * @return
+ * @param argus The return string for the arguments
+ * @return bool Whether or not the arguments passed in are valid
  */
-bool Args(int argc, char * argv[]) {
+bool Args(int argc, char * argv[], std::map<std::string, std::vector<std::string>>& argus) {
 	bool passed(true);
 	std::string cmd(SplitFilename(argv[0]));
 
@@ -130,13 +132,29 @@ bool Args(int argc, char * argv[]) {
 		}
 	}
 
+	//Validates the arguments
 	for(auto const& map : args) {
-		std::cout << map.first << " ";
-		for(auto const& str : map.second) {
-			std::cout << str;
+		if(map.first == "--load") {
+			if(!FileExists(map.second.front())) {
+				std::cerr << map.first << " incorrect argument: " << map.second.front() << std::endl;
+				passed = false;
+			}
+		}else if(map.first == "--log") {
+		}else if(map.first == "--save") {
+		}else if(map.first == "--testing") {
+			if(!FileExists(map.second.front())) {
+				std::cerr << map.first << " incorrect argument: " << map.second.front() << std::endl;
+				passed = false;
+			}
+		}else if(map.first == "--training") {
+			if(!FileExists(map.second.front())) {
+				std::cerr << map.first << " incorrect argument: " << map.second.front() << std::endl;
+				passed = false;
+			}
 		}
-		std::cout << std::endl;
 	}
+
+	argus = args;
 	return passed;
 }
 }
