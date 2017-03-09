@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 11)
 
 set(dt_VERSION_MAJOR 0)
 set(dt_VERSION_MINOR 1)
-set(dt_VERSION_PATCH 1)
+set(dt_VERSION_PATCH 2)
 
 configure_file (
   "${PROJECT_SOURCE_DIR}/dt_config.hpp.in"
