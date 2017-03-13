@@ -2,10 +2,11 @@
 #define PARSE_HPP
 
 #include <sstream>
+#include <climits>
 
 namespace parse {
 	namespace detail {
-        int LINESTART = 0;
+        int LINESTART = INT_MAX;
     }
 
 	enum STR2INT_ERROR { SUCCESS, OVERFLOW, UNDERFLOW, INCONVERTIBLE };
