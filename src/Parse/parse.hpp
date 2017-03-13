@@ -64,7 +64,7 @@ namespace parse {
 				}else if(line_count == 3) {
 					parse::str2int(parse::detail::LINESTART, line.c_str(), 10);
 					parse::detail::LINESTART += 4;
-				}else if(line_count < parse::detail::LINESTART) {
+				}else if(line_count > 3 && line_count < parse::detail::LINESTART) {
 					 std::vector<std::string> temp = parse::Split(line, deliminator);
 					 std::string name = temp.front();
 					 header["ORDER"].push_back(name);
