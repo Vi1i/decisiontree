@@ -14,8 +14,11 @@ int main(int argc, char * argv[]) {
 	std::map<std::string, std::vector<std::string>> header;
 	parse::Header(args["--training"].front(), header);
 	
-	std::vector<std::vector<std::string>> data;
-	parse::Data(args["--training"].front(), data);
+	std::vector<std::map<std::string, std::string>> data;
+	parse::Data(args["--training"].front(),header["ORDER"], data);
+
+	dt::DT dt(header, data);
+	dt.CreateTree();
 
 	exit(EXIT_SUCCESS);
 }

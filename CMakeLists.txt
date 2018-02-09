@@ -3,7 +3,7 @@ project (dt)
 set(CMAKE_CXX_STANDARD 11)
 
 set(dt_VERSION_MAJOR 0)
-set(dt_VERSION_MINOR 2)
+set(dt_VERSION_MINOR 3)
 set(dt_VERSION_PATCH 0)
 
 configure_file (

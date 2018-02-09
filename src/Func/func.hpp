@@ -139,19 +139,22 @@ bool Args(int argc, char * argv[], std::map<std::string, std::vector<std::string
 	for(auto const& map : args) {
 		if(map.first == "--load") {
 			if(!FileExists(map.second.front())) {
-				std::cerr << map.first << " incorrect argument: " << map.second.front() << std::endl;
+				std::cerr << map.first << " incorrect argument: "
+							<< map.second.front() << std::endl;
 				passed = false;
 			}
 		}else if(map.first == "--log") {
 		}else if(map.first == "--save") {
 		}else if(map.first == "--testing") {
 			if(!FileExists(map.second.front())) {
-				std::cerr << map.first << " incorrect argument: " << map.second.front() << std::endl;
+				std::cerr << map.first << " incorrect argument: "
+							<< map.second.front() << std::endl;
 				passed = false;
 			}
 		}else if(map.first == "--training") {
 			if(!FileExists(map.second.front())) {
-				std::cerr << map.first << " incorrect argument: " << map.second.front() << std::endl;
+				std::cerr << map.first << " incorrect argument: "
+							<< map.second.front() << std::endl;
 				passed = false;
 			}
 		}

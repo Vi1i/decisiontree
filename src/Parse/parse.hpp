@@ -50,7 +50,8 @@ namespace parse {
 	    i = l;
 	    return SUCCESS;
 	}
-	void Header(const std::string& filename, std::map<std::string, std::vector<std::string>>& header){
+	void Header(const std::string& filename,
+					std::map<std::string, std::vector<std::string>>& header){
 		std::ifstream ifs(filename);
 		std::string line;
 		char deliminator = ',';
@@ -85,7 +86,8 @@ namespace parse {
 		}
 	}
 
-	void Data(const std::string& filename, std::vector<std::vector<std::string>>& data){
+	void Data(const std::string& filename, const std::vector<std::string>& order,
+					std::vector<std::map<std::string, std::string>>& data){
 		std::ifstream ifs(filename);
 		std::string line;
 		char deliminator = ',';
@@ -95,7 +97,16 @@ namespace parse {
 			while(std::getline(ifs, line)) {
 				line_count++;
 				if(line_count > parse::detail::LINESTART) {
-					data.push_back(parse::Split(line, deliminator));
+					std::map<std::string, std::string> map;
+					std::vector<std::string> temp = parse::Split(line, deliminator);
+					for(auto z = 0; z < temp.size(); z++) {
+						if(z >= order.size()) {
+							map["Oracle"] = temp.at(z);
+						}else{
+							map[order.at(z)] = temp.at(z);
+						}
+					}
+					data.push_back(map);
 				}
 			}
 			ifs.close();
